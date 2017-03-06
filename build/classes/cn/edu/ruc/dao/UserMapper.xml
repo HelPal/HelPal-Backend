@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace= "cn.edu.ruc.dao.UserMapper">
+
+  <resultMap type="cn.edu.ruc.vo.User" id="resultListUser">
+  <id column="userid" property="userid"/>
+  <result column="username" property="username"/>
+  <result column="password" property="password"/>
+  <result column="sex" property="sex"/>
+  <result column="telephone" property="telephone"/>
+  <result column="email" property="email"/>
+  <result column="regdate" property="regdate"/>  
+  </resultMap>
+ 
+  
+  <select id="SelectUserList_All" resultMap="resultListUser">
+  select * from user;
+  </select>  
+  
+  
+</mapper>

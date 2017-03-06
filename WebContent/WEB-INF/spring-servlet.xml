@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd   
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd   
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd           
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.1.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd"
+       >
+    
+    <!-- 启用spring mvc 注解 -->
+	<context:annotation-config />
+	 <!-- 设置使用注解的类所在的jar包 -->
+	<context:component-scan base-package="cn.edu.ruc" />
+	<!-- 设置数据检验、数据转换、数据格式化 -->
+	<mvc:annotation-driven/>
+	<!-- 启动Spring MVC的注解功能 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />   
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="utf-8" p:maxUploadSize="10000000" p:uploadTempDir="upload/temp" />
+	 
+	
+	<import resource="classes/applicationContext.xml"/>
+	
+	
+	
+	<!-- 配置视图解析器，将ModelAndView字符串解析为具体页面-->
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:suffix=".jsp" /> -->
+	<!--获取静态资源路径的支持-->
+	<!--  <mvc:resources mapping="/bootstrap/**" location="/bootstrap/"/>  -->
+	
+</beans>  
