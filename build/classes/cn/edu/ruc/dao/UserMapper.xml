@@ -5,19 +5,29 @@
 <mapper namespace= "cn.edu.ruc.dao.UserMapper">
 
   <resultMap type="cn.edu.ruc.vo.User" id="resultListUser">
-  <id column="userid" property="userid"/>
+  <id column="user_id" property="user_id"/>
   <result column="username" property="username"/>
   <result column="password" property="password"/>
-  <result column="sex" property="sex"/>
-  <result column="telephone" property="telephone"/>
   <result column="email" property="email"/>
-  <result column="regdate" property="regdate"/>  
+  <result column="gender" property="gender"/>
+  <result column="motto" property="motto"/>
+  <result column="avatorUrl" property="avatorUrl"/>  
   </resultMap>
  
-  
+  <!--选出所有用户  -->
   <select id="SelectUserList_All" resultMap="resultListUser">
   select * from user;
   </select>  
+  
+  <!--选出能匹配上的用户  -->
+  <select id="getMatchedUser" parameterType="String" resultMap="resultListUser">
+  select * from user where username = #{username} and password = #{password};
+  </select>
+  
+  <!--添加新用户-->
+  <select id="InsertToUser" parameterType="String" resultMap="resultListUser">
+  insert into user(username,password,email) values (#{username}, #{password},#{email});
+  </select>
   
   
 </mapper>

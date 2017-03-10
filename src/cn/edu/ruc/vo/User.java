@@ -1,22 +1,19 @@
 package cn.edu.ruc.vo;
 
-import java.util.Arrays;
 
 public class User {
-	private int userid;
+	private int user_id;
 	private String username;
 	private String password;
 	private String email;
 	private String gender;
-	private String[] skills;
-	private String[] interests;
 	private String motto;
 	private String avatarUrl;
 	public int getUserid() {
-		return userid;
+		return user_id;
 	}
 	public void setUserid(int userid) {
-		this.userid = userid;
+		this.user_id = userid;
 	}
 	public String getUsername() {
 		return username;
@@ -42,18 +39,6 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String[] getSkills() {
-		return skills;
-	}
-	public void setSkills(String[] skills) {
-		this.skills = skills;
-	}
-	public String[] getInterests() {
-		return interests;
-	}
-	public void setInterests(String[] interests) {
-		this.interests = interests;
-	}
 	public String getMotto() {
 		return motto;
 	}
@@ -69,9 +54,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [userid=" + userid + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", gender=" + gender + ", skills=" + Arrays.toString(skills) + ", interests="
-				+ Arrays.toString(interests) + ", motto=" + motto + ", avatarUrl=" + avatarUrl + "]";
+		return "User [userid=" + user_id + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", gender=" + gender +  ", motto=" + motto + ", avatarUrl=" + avatarUrl + "]";
 	}
 	
 	

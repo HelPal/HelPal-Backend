@@ -24,8 +24,8 @@
 	<!-- 启动Spring MVC的注解功能 -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />   
 	<!-- 文件上传 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-		p:defaultEncoding="utf-8" p:maxUploadSize="10000000" p:uploadTempDir="upload/temp" />
+	<!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="utf-8" p:maxUploadSize="10000000" p:uploadTempDir="upload/temp" />  -->
 	 
 	
 	<import resource="classes/applicationContext.xml"/>

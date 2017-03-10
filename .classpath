@@ -7,6 +7,9 @@
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
+		<accessrules>
+			<accessrule kind="accessible" pattern="**"/>
+		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="json_jar/jackson-core-asl-1.9.13.jar"/>
 	<classpathentry kind="lib" path="json_jar/jackson-mapper-asl-1.9.13.jar"/>
