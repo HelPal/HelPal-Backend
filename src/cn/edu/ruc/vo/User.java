@@ -5,15 +5,17 @@ public class User {
 	private int user_id;
 	private String username;
 	private String password;
-	private String email;
 	private String gender;
+	private int age;
+	private String star_signs;
 	private String motto;
 	private String avatarUrl;
-	public int getUserid() {
+	
+	public int getUser_id() {
 		return user_id;
 	}
-	public void setUserid(int userid) {
-		this.user_id = userid;
+	public void setUser_Id(int user_Id) {
+		this.user_id = user_Id;
 	}
 	public String getUsername() {
 		return username;
@@ -27,17 +29,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getStar_signs() {
+		return star_signs;
+	}
+	public void setStar_signs(String star_signs) {
+		this.star_signs = star_signs;
 	}
 	public String getMotto() {
 		return motto;
@@ -54,8 +62,8 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [userid=" + user_id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", gender=" + gender +  ", motto=" + motto + ", avatarUrl=" + avatarUrl + "]";
+		return "User [user_Id=" + user_id + ", username=" + username + ", password=" + password + ", gender=" + gender
+				+ ", age=" + age + ", star_signs=" + star_signs + ", motto=" + motto + ", avatarUrl=" + avatarUrl + "]";
 	}
 	
 	
