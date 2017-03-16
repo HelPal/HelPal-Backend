@@ -7,5 +7,5 @@ public interface UserMapper {
 	public List<User> SelectWantedUser(String u_name);
     public List<User> getMatchedUser(User user);
     public void InsertToUser(User user);
-
+    public void UpdateUserInfo(User user);
 }

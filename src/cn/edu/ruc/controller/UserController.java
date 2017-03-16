@@ -66,7 +66,7 @@ public class UserController {
 				
 				/*获取当前系统UNIX时间戳*/;
 				long UNIX_Time = System.currentTimeMillis()/1000;
-				String ini_token = username +UNIX_Time+EncodeToken.Hash_addkey("WelcomeToHelpal","MD5");
+				String ini_token = username+"+"+UNIX_Time+"+"+EncodeToken.Hash_addkey("WelcomeToHelpal","MD5");
 				/* 加密 */
 				accessToken =EncodeToken.Encode(ini_token);
 				
@@ -94,13 +94,13 @@ public class UserController {
 				@RequestParam(value = "username") String username,
 	            @RequestParam(value = "password") String password) throws UnsupportedEncodingException{
 			response.setHeader("Access-Control-Allow-Origin", "*");		
-
+			
 			if(userService.IsPasswordCorrect(username, password)  == -1){//说明user表里没有该用户，注册合理
-				userService.AddNewUser(username, password);	
 				
+				userService.AddNewUser(username, password);	
 				/*获取当前系统UNIX时间戳*/;
 				long UNIX_Time = System.currentTimeMillis()/1000;
-				String ini_token = username +UNIX_Time+EncodeToken.Hash_addkey("WelcomeToHelpal","MD5");
+				String ini_token = username +"+"+UNIX_Time+"+"+EncodeToken.Hash_addkey("WelcomeToHelpal","MD5");
 				/* 加密 */
 				accessToken =EncodeToken.Encode(ini_token);
 				System.out.println("用户已成功加入！");
@@ -131,7 +131,6 @@ public class UserController {
 			response.setHeader("Access-Control-Allow-Origin", "*");
 			
 			List<User> wanted_user = userService.SelectWantedUser(username);		
-			
 			if(wanted_user.size() == 1){			
 				List<Skill> user_skill = skillService.SelectUserSkill(wanted_user.get(0).getUser_id());
 				List<Interest> user_interest = interestService.SelectUserInterest(wanted_user.get(0).getUser_id());
@@ -159,18 +158,38 @@ public class UserController {
 		public Map<String, Object> SetUserInfo(HttpServletRequest request,HttpServletResponse response,
 				@RequestParam(value = "accessToken") String accessToken,
 				@RequestParam(value = "gender") String gender,
-				@RequestParam(value = "age") String age,
+				@RequestParam(value = "age") int age,
 				@RequestParam(value = "star_signs") String star_signs,
-				@RequestParam(value = "motto") String motto){
+				@RequestParam(value = "motto") String motto) throws UnsupportedEncodingException{
 			response.setHeader("Access-Control-Allow-Origin", "*");
+			/*解密*/
+			String ini_token = EncodeToken.Getcode(accessToken);
+	    	String username = ini_token.substring(0, ini_token.indexOf('+'));
+			System.out.println(username);
 			
-			
-			
-			
-			
-			return null;
-			
-			
+			List<User> wanted_user = userService.SelectWantedUser(username);				
+			if(wanted_user.size() == 1){
+				
+				User user= new User();
+				user.setUsername(username);
+				user.setGender(gender);
+				user.setAge(age);
+				user.setStar_signs(star_signs);
+				user.setMotto(motto);
+				userService.SetUserInfo(user);
+				
+				Map<String,Object> modelMap = new HashMap<String, Object>(1);
+				modelMap.put("Status",status);
+				
+				return modelMap;
+			}else{
+				status = 1;
+				errorMsg = "设置用户信息失败！";
+				Map<String,Object> modelMap = new HashMap<String, Object>(2);
+				modelMap.put("Status",status);
+				modelMap.put("errorMsg",errorMsg);
+				return modelMap;
+			}	
 		}
 		
 		

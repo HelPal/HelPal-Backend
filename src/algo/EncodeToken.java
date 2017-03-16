@@ -9,6 +9,9 @@ import java.security.NoSuchAlgorithmException;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
+/*初始token＝username+时间戳＋hash加密后的字符串 ；
+ *加密后token ＝给初始token，先base64编码，再URLEncode编码*/
+
 public class EncodeToken {
 	//hash加密	
 		public static String Hash_addkey(String str, String type){

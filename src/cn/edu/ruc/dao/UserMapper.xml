@@ -8,11 +8,17 @@
   <id column="user_id" property="user_id"/>
   <result column="username" property="username"/>
   <result column="password" property="password"/>
-  <result column="email" property="email"/>
   <result column="gender" property="gender"/>
+  <result column="age" property="age"/>  
+  <result column="star_signs" property="star_signs"/> 
   <result column="motto" property="motto"/>
   <result column="avatorUrl" property="avatorUrl"/>  
   </resultMap>
+ 
+  <!-- 更新用户的信息 -->
+  <select id="UpdateUserInfo" parameterType="String" resultMap="resultListUser">
+  update user set gender = #{gender}, age = #{age}, star_signs = #{star_signs}, motto = #{motto} where username = #{username};
+  </select>
  
   <!--选出特定用户  -->
   <select id="SelectWantedUser" parameterType="String" resultMap="resultListUser">

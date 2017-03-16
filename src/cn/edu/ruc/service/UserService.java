@@ -14,7 +14,11 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-  
+    //设置用户信息_By Rykie
+	public void SetUserInfo(User user) {
+		userMapper.UpdateUserInfo(user);
+	}
+	
     //选出特定用户信息_By Rykie
 	public List<User> SelectWantedUser(String u_name){	
 		return userMapper.SelectWantedUser(u_name);
